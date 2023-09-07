@@ -30,12 +30,25 @@ async def uniImage(self, ctx, arg):
     embed = discord.Embed(title= "Item ID: {arg}", url= "https://universalis-ffxiv.github.io/universalis-assets/icon2x/{arg}.png" )
     await ctx.send(embed)
 
+'''@chu.command()
+async def get_avatar(ctx):
+    user = ctx.author  # Get the user who used the command
+    print(user.display_avatar.url)
+    await ctx.send(user.display_avatar.url)'''
+    
+
+
+
+
+
 async def load():
     current_directory = os.path.dirname(os.path.abspath(__file__))
     os.chdir(current_directory)
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             await chu.load_extension(f"cogs.{filename[:-3]}")
+
+
 async def main():
     await load()
     await chu.start(TOKEN)
