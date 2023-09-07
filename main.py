@@ -8,30 +8,27 @@ import asyncio
 
 #config = json.loads(open("json/config.json").read())
 #TOKEN = config["settings"]["token"]
+with open("actual/actual.json") as json_file:
+    data = json.load(json_file)
+TOKEN = data['settings']['token']
 
-TOKEN = "token"
 chu = commands.Bot(command_prefix = "!", intents= discord.Intents().all())
 
 @chu.event
 async def on_ready():
     print("Logged in as {0.user}".format(chu))
 
-
+'''@chu.event
+async def on_message(message):
+    if message.author == chu.user:
+        return
+    if message.content.startswith(":3"):
+            await message.channel.send(":3")'''
 
 @chu.command()
 async def uniImage(self, ctx, arg):
     embed = discord.Embed(title= "Item ID: {arg}", url= "https://universalis-ffxiv.github.io/universalis-assets/icon2x/{arg}.png" )
     await ctx.send(embed)
-@chu.command()
-async def uniTest(ctx):
-    r = requests.get("https://universalis.app/api/v2/Europe/39720")
-    data = json.loads(r.text)
-    newData = data["listings"]["itemID"]
-    await ctx.send("Item ID: ", newData)
-
-
-
-
 
 async def load():
     current_directory = os.path.dirname(os.path.abspath(__file__))

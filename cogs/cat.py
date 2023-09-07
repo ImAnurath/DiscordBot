@@ -5,7 +5,7 @@ import api_refs as ar
 class Cat(commands.Cog):
     def __init__(self, chu):
         self.chu = chu
-    @commands.command()
+    @commands.command(aliases=['Cat'])
     async def cat(self, ctx):
         await ctx.send(ar.get_cat()[0]['url'])
 

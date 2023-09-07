@@ -5,7 +5,7 @@ import api_refs as ar
 class Dog(commands.Cog):
     def __init__(self, chu):
         self.chu = chu
-    @commands.command()
+    @commands.command(aliases=['Dog'])
     async def dog(self, ctx):
         await ctx.send(ar.get_dog()[0]['url'])
 
