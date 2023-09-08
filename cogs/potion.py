@@ -47,3 +47,4 @@ async def setup(chu):
 
 
 
+# + "https://universalis-ffxiv.github.io/universalis-assets/icon2x/39730.png"

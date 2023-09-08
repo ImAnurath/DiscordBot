@@ -5,7 +5,7 @@ import json
 import api_refs as ar
 import os
 import asyncio
-
+import time
 #config = json.loads(open("json/config.json").read())
 #TOKEN = config["settings"]["token"]
 with open("actual/actual.json") as json_file:
@@ -31,14 +31,13 @@ async def uniImage(self, ctx, arg):
     await ctx.send(embed)
 
 '''@chu.command()
-async def get_avatar(ctx):
-    user = ctx.author  # Get the user who used the command
-    print(user.display_avatar.url)
-    await ctx.send(user.display_avatar.url)'''
-    
-
-
-
+async def count(ctx):
+    for i in range(999):
+        await ctx.send(i)
+        await ctx.send("Sleep")
+        time.sleep(2)
+        await ctx.send("Awake")'''
+ #async response test
 
 
 async def load():
