@@ -35,4 +35,3 @@ def getCheapest(name):
     server = data["listings"][0]["worldName"]
     string = str(price) + " gil at " + server
     return string
-    

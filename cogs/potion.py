@@ -8,7 +8,7 @@ import json
 embed = discord.Embed(
         title="Average Potion Prices",
         colour=0xc000f5,
-        timestamp=datetime.now
+        timestamp=datetime.now()
     )
 idList = { 
                 "Grade 8 Tincture of Strength" :39727, 
