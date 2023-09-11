@@ -1,11 +1,11 @@
 from datetime import datetime
-import nextcord
-from nextcord.ext import commands
+import discord
+from discord.ext import commands
 import referances as ref
 import requests
 import json
 
-embed = nextcord.Embed(
+embed = discord.Embed(
         title="Average Potion Prices",
         colour=0xc000f5,
         timestamp=datetime.now()

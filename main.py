@@ -1,5 +1,5 @@
-import nextcord
-from nextcord.ext import commands
+import discord
+from discord.ext import commands
 import requests
 import json
 import referances as ar
@@ -14,7 +14,7 @@ with open("actual/actual.json") as json_file:
     data = json.load(json_file)
 TOKEN = data['settings']['token']
 
-chu = commands.Bot(command_prefix = "!", intents= nextcord.Intents().all())
+chu = commands.Bot(command_prefix = "!", intents= discord.Intents().all())
 
 @chu.event
 async def on_ready():

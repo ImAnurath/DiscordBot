@@ -1,5 +1,5 @@
-import nextcord
-from nextcord.ext import commands
+import discord
+from discord.ext import commands
 import referances as ref
 from datetime import datetime
 from fuzzywuzzy import fuzz
@@ -11,7 +11,7 @@ with open(json_file_path, 'r') as file:
     itemNames = json.load(file)
 
 
-embed = nextcord.Embed(
+embed = discord.Embed(
         colour=0xc000f5,
         timestamp= datetime.now()
     )
