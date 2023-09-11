@@ -18,35 +18,12 @@ chu = commands.Bot(command_prefix = "!", intents= discord.Intents().all())
 async def on_ready():
     print("Logged in as {0.user}".format(chu))
 
-'''@chu.event
-async def on_message(message):
-    if message.author == chu.user:
-        return
-    if message.content.startswith(":3"):
-            await message.channel.send(":3")'''
-
-@chu.command()
-async def uniImage(self, ctx, arg):
-    embed = discord.Embed(title= "Item ID: {arg}", url= "https://universalis-ffxiv.github.io/universalis-assets/icon2x/{arg}.png" )
-    await ctx.send(embed)
-
-'''@chu.command()
-async def count(ctx):
-    for i in range(999):
-        await ctx.send(i)
-        await ctx.send("Sleep")
-        time.sleep(2)
-        await ctx.send("Awake")'''
- #async response test
-
-
 async def load():
     current_directory = os.path.dirname(os.path.abspath(__file__))
     os.chdir(current_directory)
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             await chu.load_extension(f"cogs.{filename[:-3]}")
-
 
 async def main():
     await load()

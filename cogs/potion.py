@@ -8,7 +8,7 @@ import json
 embed = discord.Embed(
         title="Average Potion Prices",
         colour=0xc000f5,
-        timestamp=datetime.now()
+        timestamp=datetime.now
     )
 idList = { 
                 "Grade 8 Tincture of Strength" :39727, 
@@ -16,7 +16,7 @@ idList = {
                 "Grade 8 Tincture of Intelligence" :39730,
                 "Grade 8 Tincture of Mind" :39731
                 }
-embed.set_author(name="Universalis Data", icon_url="https://universalis.app/i/universalis/universalis.png")
+
 
 class Potion(commands.Cog):
     
