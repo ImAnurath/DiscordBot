@@ -1,11 +1,11 @@
 from datetime import datetime
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import referances as ref
 import requests
 import json
 
-embed = discord.Embed(
+embed = nextcord.Embed(
         title="Average Potion Prices",
         colour=0xc000f5,
         timestamp=datetime.now()
@@ -43,7 +43,7 @@ class Potion(commands.Cog):
         embed.clear_fields()
 
 async def setup(chu):
-    await chu.add_cog(Potion(chu))
+    chu.add_cog(Potion(chu))
 
 
 

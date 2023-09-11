@@ -1,4 +1,4 @@
-from discord.ext import commands
+from nextcord.ext import commands
 
 
 class Ping(commands.Cog):
@@ -11,4 +11,4 @@ class Ping(commands.Cog):
 
 
 async def setup(chu):
-    await chu.add_cog(Ping(chu))
+    chu.add_cog(Ping(chu))

@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import referances as ref
 
 class Cat(commands.Cog):
@@ -11,4 +11,4 @@ class Cat(commands.Cog):
 
 
 async def setup(chu):
-    await chu.add_cog(Cat(chu))
+    chu.add_cog(Cat(chu))

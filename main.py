@@ -1,18 +1,20 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import requests
 import json
 import referances as ar
 import os
 import asyncio
 import time
+
 #config = json.loads(open("json/config.json").read())
 #TOKEN = config["settings"]["token"]
+
 with open("actual/actual.json") as json_file:
     data = json.load(json_file)
 TOKEN = data['settings']['token']
 
-chu = commands.Bot(command_prefix = "!", intents= discord.Intents().all())
+chu = commands.Bot(command_prefix = "!", intents= nextcord.Intents().all())
 
 @chu.event
 async def on_ready():
@@ -23,7 +25,8 @@ async def load():
     os.chdir(current_directory)
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
-            await chu.load_extension(f"cogs.{filename[:-3]}")
+            chu.load_extension(f"cogs.{filename[:-3]}")
+         
 
 async def main():
     await load()

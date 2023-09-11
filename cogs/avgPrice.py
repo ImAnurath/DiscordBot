@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import referances as ref
 from datetime import datetime
 from fuzzywuzzy import fuzz
@@ -11,7 +11,7 @@ with open(json_file_path, 'r') as file:
     itemNames = json.load(file)
 
 
-embed = discord.Embed(
+embed = nextcord.Embed(
         colour=0xc000f5,
         timestamp= datetime.now()
     )
@@ -34,7 +34,6 @@ class avgPrice(commands.Cog):
             embed.add_field(name="Cheapest", value=f"{cheapest}", inline=False)
             await ctx.send(embed=embed)
         else:
-            ref.checkSpelling(itemName)
             item_name, score = process.extractOne(itemName, itemNames.keys())
             similarity_threshold = 90
             if score >= similarity_threshold:
@@ -44,4 +43,4 @@ class avgPrice(commands.Cog):
         embed.clear_fields()
 
 async def setup(chu):
-    await chu.add_cog(avgPrice(chu))
+    chu.add_cog(avgPrice(chu))

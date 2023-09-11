@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import json
 import os
 from fuzzywuzzy import fuzz
@@ -31,4 +31,4 @@ class PriceAlert(commands.Cog):
             
 
 async def setup(chu):
-    await chu.add_cog(PriceAlert(chu))
+    chu.add_cog(PriceAlert(chu))
