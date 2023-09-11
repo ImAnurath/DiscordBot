@@ -1,7 +1,7 @@
 from datetime import datetime
 import discord
 from discord.ext import commands
-import api_refs as ar
+import referances as ref
 import requests
 import json
 

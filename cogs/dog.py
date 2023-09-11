@@ -1,13 +1,13 @@
 import discord
 from discord.ext import commands
-import api_refs as ar
+import referances as ref
 
 class Dog(commands.Cog):
     def __init__(self, chu):
         self.chu = chu
     @commands.command(aliases=['Dog'])
     async def dog(self, ctx):
-        await ctx.send(ar.get_dog()[0]['url'])
+        await ctx.send(ref.get_dog()[0]['url'])
 
 
 async def setup(chu):

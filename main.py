@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import requests
 import json
-import api_refs as ar
+import referances as ar
 import os
 import asyncio
 import time
