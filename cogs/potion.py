@@ -43,7 +43,7 @@ class Potion(commands.Cog):
         embed.clear_fields()
 
 async def setup(chu):
-    chu.add_cog(Potion(chu))
+    await chu.add_cog(Potion(chu))
 
 
 

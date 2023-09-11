@@ -11,4 +11,4 @@ class Ping(commands.Cog):
 
 
 async def setup(chu):
-    chu.add_cog(Ping(chu))
+    await chu.add_cog(Ping(chu))

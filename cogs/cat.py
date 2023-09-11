@@ -11,4 +11,4 @@ class Cat(commands.Cog):
 
 
 async def setup(chu):
-    chu.add_cog(Cat(chu))
+    await chu.add_cog(Cat(chu))

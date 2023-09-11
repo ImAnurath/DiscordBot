@@ -11,4 +11,4 @@ class Dog(commands.Cog):
 
 
 async def setup(chu):
-    chu.add_cog(Dog(chu))
+    await chu.add_cog(Dog(chu))

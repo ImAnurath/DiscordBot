@@ -31,4 +31,4 @@ class PriceAlert(commands.Cog):
             
 
 async def setup(chu):
-    chu.add_cog(PriceAlert(chu))
+    await chu.add_cog(PriceAlert(chu))

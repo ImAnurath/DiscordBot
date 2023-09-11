@@ -25,7 +25,7 @@ async def load():
     os.chdir(current_directory)
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
-            chu.load_extension(f"cogs.{filename[:-3]}")
+            await chu.load_extension(f"cogs.{filename[:-3]}")
          
 
 async def main():

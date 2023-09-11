@@ -43,4 +43,4 @@ class avgPrice(commands.Cog):
         embed.clear_fields()
 
 async def setup(chu):
-    chu.add_cog(avgPrice(chu))
+    await chu.add_cog(avgPrice(chu))
