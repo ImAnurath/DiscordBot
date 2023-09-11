@@ -13,8 +13,10 @@ import time
 with open("actual/actual.json") as json_file:
     data = json.load(json_file)
 TOKEN = data['settings']['token']
+intents = discord.Intents.default()
+intents.message_content = True
 
-chu = commands.Bot(command_prefix = "!", intents= discord.Intents().all())
+chu = commands.Bot(command_prefix = "!",intents= intents)
 
 @chu.event
 async def on_ready():
