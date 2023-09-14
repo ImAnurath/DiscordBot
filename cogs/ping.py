@@ -1,13 +1,16 @@
+import discord
 from discord.ext import commands
-
+import referances as ref
+from discord import app_commands
 
 class Ping(commands.Cog):
     def __init__(self, chu):
         self.chu = chu
-    @commands.command(aliases=['Ping'])
-    async def ping(self, ctx):
+
+    @app_commands.command(name= "ping", description="Bot Latency")
+    async def ping(self, interaction: discord.Interaction):
         latency = round(self.chu.latency * 1000)
-        await ctx.send(latency)
+        await interaction.response.send_message(latency)
 
 
 async def setup(chu):

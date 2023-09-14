@@ -4,12 +4,23 @@ from discord.ext import commands
 import referances as ref
 import requests
 import json
-
+import os
 embed = discord.Embed(
         title="Average Potion Prices",
         colour=0xc000f5,
         timestamp=datetime.now()
     )
+json_file_path = os.path.join(os.getcwd(), 'json', 'itemNames.json')
+with open(json_file_path, 'r') as file:
+    itemNames = json.load(file)
+'''{
+            itemNames["Grade 8 Tincture of Strength"],
+            itemNames["Grade 8 Tincture of Dexterity"],
+            itemNames["Grade 8 Tincture of Vitality"],
+            itemNames["Grade 8 Tincture of Intelligence"],
+            itemNames["Grade 8 Tincture of Mind"],
+}
+'''
 idList = { 
                 "Grade 8 Tincture of Strength" :39727, 
                 "Grade 8 Tincture of Dexterity" :39728,

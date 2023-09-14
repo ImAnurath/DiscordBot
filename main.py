@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-import requests
 import json
 import referances as ar
 import os
@@ -13,14 +12,21 @@ import time
 with open("actual/actual.json") as json_file:
     data = json.load(json_file)
 TOKEN = data['settings']['token']
+
 intents = discord.Intents.default()
 intents.message_content = True
 
-chu = commands.Bot(command_prefix = "!",intents= intents)
+chu = commands.Bot(command_prefix= "!",intents= intents)
+
+@chu.tree.command(name= "test", description="Testing")
+async def test(interaction: discord.Interaction):
+    await interaction.response.send_message(content= "Test succesful!")
 
 @chu.event
 async def on_ready():
-    print("Logged in as {0.user}".format(chu))
+    synced = await chu.tree.sync()
+    print(f"Commands Synced {len(synced)}")
+    print(f"Logged in as {chu.user}")
 
 async def load():
     current_directory = os.path.dirname(os.path.abspath(__file__))
