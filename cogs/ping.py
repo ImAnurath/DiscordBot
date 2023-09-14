@@ -10,7 +10,7 @@ class Ping(commands.Cog):
     @app_commands.command(name= "ping", description="Bot Latency")
     async def ping(self, interaction: discord.Interaction):
         latency = round(self.chu.latency * 1000)
-        await interaction.response.send_message(latency)
+        await interaction.response.send_message(f"Latency: {latency}ms")
 
 
 async def setup(chu):
