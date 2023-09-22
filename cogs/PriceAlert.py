@@ -5,21 +5,43 @@ import os
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 from discord import app_commands
-from typing import Tuple
+import referances as ref
+import asyncio
+from datetime import datetime
 
 json_file_path = os.path.join(os.getcwd(), 'json', 'itemNames.json')
 with open(json_file_path, 'r') as file:
     itemNames = json.load(file)
 
+embed = discord.Embed(
+        colour=0xc000f5,
+        timestamp= datetime.now()
+    )
+embed.set_footer(text="Check time")
+
 class PriceAlert(commands.Cog):
     def __init__(self, chu):
         self.chu = chu
 
-    @app_commands.command(name= "price_alert", description="Enter the name of the item") # This command still needs to become an actual alert
-    async def priceAlert(self, interaction: discord.Interaction, name:str):
+    @app_commands.command(name= "price_alert", description="Enter the name of the item and the price you want")
+    async def priceAlert(self, interaction: discord.Interaction, name:str, price:int):
         name = name.title()
+        embed.set_thumbnail(url=ref.getImageUrl(name))
         if name in itemNames:
-            await interaction.response.send_message(itemNames[name])
+            await interaction.channel.send(f"Alarm for {name} is set to {price} gil")
+            while True:
+                data = ref.getCheapest(name)
+                unitPrice = data["listings"][0]["pricePerUnit"]
+                server = data["listings"][0]["worldName"]
+                if(unitPrice <= price):
+                    embed.add_field(name=name, value=f"{unitPrice} gil \nServer: {server}", inline=False)
+                    user = interaction.user.mention
+                    await interaction.channel.send(f"{user}", embed=embed)
+                    #await interaction.response.send_message(f"{name} is available in {server} for {unitPrice}")
+                    break
+                else:
+                    #await interaction.channel.send(f"{name} is {unitPrice} in {server}. Waiting for 5 more mins")
+                    await asyncio.sleep(300) #sleep for 5 min
         else:
             # Find the most similar item name
             item_name, score = process.extractOne(name, itemNames.keys())
@@ -28,9 +50,6 @@ class PriceAlert(commands.Cog):
                 await interaction.response.send_message(f"Did you mean '{item_name}'?")
             else:
                 await interaction.response.send_message("Item not found. Check your damn spelling.")
-            
-        
-            
 
 async def setup(chu):
     await chu.add_cog(PriceAlert(chu))

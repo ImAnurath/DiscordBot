@@ -26,12 +26,15 @@ def getID(name):
     return id
 def getImageUrl(name):
     id = itemNames[name]
+    print(name)
+    print(id)
     return (f"https://universalis-ffxiv.github.io/universalis-assets/icon2x/{id}.png")
 def getCheapest(name):
     id = itemNames[name]
     r = requests.get(f"https://universalis.app/api/v2/Europe/{id}?listings=1&fields=listings.pricePerUnit%2Clistings.worldName")
-    data = json.loads(r.text)
-    price = data["listings"][0]["pricePerUnit"]
-    server = data["listings"][0]["worldName"]
-    string = str(price) + " gil at " + server
-    return string
+    if r.status_code == 200:
+        print("API call is sucessful")
+        data = json.loads(r.text)
+        return data
+    else:
+        print("Request failed")

@@ -5,6 +5,8 @@ import referances as ref
 import requests
 import json
 import os
+from discord import app_commands
+
 embed = discord.Embed(
         title="Average Potion Prices",
         colour=0xc000f5,
@@ -34,10 +36,9 @@ class Potion(commands.Cog):
     def __init__(self, chu):
         self.chu = chu
     
-    @commands.command(aliases=['pot', 'potion'])
-    async def Potion(self, ctx):
-        await ctx.send("Gimme a second!")
-        user = ctx.author
+    @app_commands.command(name= "potion", description="Current potion prices")
+    async def potion(self, interaction: discord.Interaction):
+        user = interaction.user.mention
         embed.set_thumbnail(url=user.display_avatar.url)
         embed.set_footer(text="Check time")
         average_prices = {}
@@ -49,7 +50,7 @@ class Potion(commands.Cog):
             average_prices[item_name] = average_price
         for item_name, price in average_prices.items(): # Put the name of the item and prices into embed message
             embed.add_field(name=item_name, value=f"{price} gil", inline=False)
-        await ctx.send(embed=embed)
+        await interaction.response.send_message(embed=embed)
         average_prices.clear()
         embed.clear_fields()
 

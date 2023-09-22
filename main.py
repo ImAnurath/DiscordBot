@@ -18,14 +18,15 @@ intents.message_content = True
 
 chu = commands.Bot(command_prefix= "!",intents= intents)
 
-@chu.tree.command(name= "test", description="Testing")
-async def test(interaction: discord.Interaction):
-    await interaction.response.send_message(content= "Test succesful!")
+@chu.tree.command(name= "shutdown", description="Shuts Down the bot")
+async def shutdown(interaction: discord.Interaction):
+    await interaction.response.send_message("Shutting Down the Bot")
+    await chu.close()
 
 @chu.event
 async def on_ready():
     synced = await chu.tree.sync()
-    print(f"Commands Synced {len(synced)}")
+    print(f"Number of Commands Synced {len(synced)}, Name: {synced}")
     print(f"Logged in as {chu.user}")
 
 async def load():
@@ -34,7 +35,6 @@ async def load():
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             await chu.load_extension(f"cogs.{filename[:-3]}")
-         
 
 async def main():
     await load()
