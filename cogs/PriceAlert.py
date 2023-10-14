@@ -12,7 +12,6 @@ from datetime import datetime
 json_file_path = os.path.join(os.getcwd(), 'json', 'itemNames.json')
 with open(json_file_path, 'r') as file:
     itemNames = json.load(file)
-
 embed = discord.Embed(
         colour=0xc000f5,
         timestamp= datetime.now()
@@ -37,10 +36,9 @@ class PriceAlert(commands.Cog):
                     embed.add_field(name=name, value=f"{unitPrice} gil \nServer: {server}", inline=False)
                     user = interaction.user.mention
                     await interaction.channel.send(f"{user}", embed=embed)
-                    #await interaction.response.send_message(f"{name} is available in {server} for {unitPrice}")
                     break
                 else:
-                    #await interaction.channel.send(f"{name} is {unitPrice} in {server}. Waiting for 5 more mins")
+                    print("Waiting for 5 minutes")
                     await asyncio.sleep(300) #sleep for 5 min
         else:
             # Find the most similar item name

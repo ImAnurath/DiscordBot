@@ -6,9 +6,6 @@ import os
 import asyncio
 import time
 
-#config = json.loads(open("json/config.json").read())
-#TOKEN = config["settings"]["token"]
-
 with open("actual/actual.json") as json_file:
     data = json.load(json_file)
 TOKEN = data['settings']['token']
@@ -25,6 +22,7 @@ async def shutdown(interaction: discord.Interaction):
 
 @chu.event
 async def on_ready():
+    print("Loading Cogs: ")
     synced = await chu.tree.sync()
     print(f"Number of Commands Synced {len(synced)}, Name: {synced}")
     print(f"Logged in as {chu.user}")
